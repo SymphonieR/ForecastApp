@@ -1,8 +1,8 @@
 import React from 'react';
-import ForecastScreen from './components/Forecast/ForecastScreen';
+import TabNavigator from './components/Navigation/Navigation';
 
 export default function App() {
   return (
-    <ForecastScreen />
+    <TabNavigator></TabNavigator>
   );
 }
