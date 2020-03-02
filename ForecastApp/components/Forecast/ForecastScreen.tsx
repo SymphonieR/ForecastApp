@@ -24,7 +24,7 @@ export default function ForecastScreen() {
         <ImageBackground 
             source={require('../../assets/img/gradient_background.jpg')} 
             style={styles.backgroundImage}>
-            <WeatherItem currentWeather={forecasts.list[0]}/> 
+            <WeatherItem city={forecasts.city.name} currentWeather={forecasts.list[0]}/> 
             <View style={styles.forecastWrapper}>
                 <FlatList 
                 horizontal={true}

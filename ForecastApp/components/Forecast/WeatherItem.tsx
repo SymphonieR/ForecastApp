@@ -3,12 +3,18 @@ import { StyleSheet, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function WeatherItem(props : any) {
+    const city = props.city;
     const weather = props.currentWeather;
+    
     return (
     <View style={styles.contentWrapper}>
         <View style={[styles.itemCentered, styles.contentCentered]}>
-            <Text style={[styles.whiteText, styles.cityContainer]}>Paris</Text>
-            <Text style={[styles.whiteText, styles.weatherContainer]}>Clear</Text>
+            <View style={{flexDirection: "row", justifyContent: "center"}}>
+                <Text style={[styles.whiteText, styles.cityContainer, { marginLeft: 50, marginRight: 10}]}> {city} </Text>
+                <Star/>
+            </View>
+            
+            <Text style={[styles.whiteText, styles.weatherContainer]}> {weather.weather[0].main} </Text>
             <Text style={[styles.whiteText, styles.tempContainer]}>  
                 { " " + Math.round(weather.main.temp) }°
             </Text>
