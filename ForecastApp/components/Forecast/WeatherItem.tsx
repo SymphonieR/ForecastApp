@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Star from '../Star/Star';
 
 export default function WeatherItem(props : any) {
     const city = props.city;
