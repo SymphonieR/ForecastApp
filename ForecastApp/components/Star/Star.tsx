@@ -15,12 +15,9 @@ import { View, Animated, TouchableWithoutFeedback, TouchableNativeFeedback, Touc
 
 export default function Star(props: any) {
     const [fadeAnim] = useState(new Animated.Value(0));
-    const [fadeAnimValue, setFadeAnimValue] = useState(0);
     const [finalValue, setFinalValue] = useState(1);
 
     fadeAnim.addListener((progress) => {
-        setFadeAnimValue(progress.value);
-        console.log(progress.value);
         if (progress.value == 1) {
             setFinalValue(0);
         }
@@ -67,7 +64,10 @@ export default function Star(props: any) {
             </Svg>
         </View>
         <Animated.View style={{...props.style, position:"absolute", opacity:fadeAnim}}>
-            <TouchableWithoutFeedback onPress={animateStar}>
+            <TouchableWithoutFeedback onPress={() => { 
+                animateStar(); 
+                props.callback();
+            }}>
             <Svg
             width="80"
             height="80"

@@ -1,18 +1,24 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableHighlightBase } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Star from '../Star/Star';
+import { connect } from 'react-redux';
 
-export default function WeatherItem(props : any) {
+function WeatherItem(props : any) {
     const city = props.city;
     const weather = props.currentWeather;
+
+    function toggleFavorite() {
+        const action = { type: "TOGGLE_FAVORITE", value: city};
+        props.dispatch(action);
+    }
     
     return (
     <View style={styles.contentWrapper}>
         <View style={[styles.itemCentered, styles.contentCentered]}>
             <View style={{flexDirection: "row", justifyContent: "center"}}>
                 <Text style={[styles.whiteText, styles.cityContainer, { marginLeft: 50, marginRight: 10}]}> {city} </Text>
-                <Star/>
+                <Star callback={toggleFavorite}/>
             </View>
             
             <Text style={[styles.whiteText, styles.weatherContainer]}> {weather.weather[0].main} </Text>
@@ -40,6 +46,13 @@ export default function WeatherItem(props : any) {
     </View>
     );
 }
+
+const mapStateToProps = (state) => {
+    return { cities: state.cities}
+}
+
+export default connect(mapStateToProps)(WeatherItem);
+
 
 const styles = StyleSheet.create({
     contentWrapper: {
@@ -74,4 +87,3 @@ const styles = StyleSheet.create({
         marginVertical: 30
     }
 });
-  

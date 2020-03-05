@@ -8,6 +8,7 @@ async function loadForecast(callback : (forecasts: any) => void) {
     let forecasts = await fetchForecast();
     callback(forecasts);
 }
+
 export default function ForecastScreen() {
     const [forecasts, setForecasts] = useState(null);
 

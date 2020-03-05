@@ -17,6 +17,10 @@ function extractHours(datetime: string) {
     }
 }
 
+export function getWeatherIcon(weather: string){
+    return <Icon name={iconMap.get(weather)} size={30} />
+}
+
 export default function ForecastItem(props: any) {
     const forecast : any = props.forecast;
     const weather : string = forecast.weather[0].main;
