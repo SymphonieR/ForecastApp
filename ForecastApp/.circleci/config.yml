@@ -1,0 +1,7 @@
+version: 2.1
+orbs:
+  node: circleci/node
+workflows:
+  app:
+    jobs:
+      - node/yarn test
